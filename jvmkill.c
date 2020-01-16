@@ -30,6 +30,9 @@ resourceExhausted(
 {
    fprintf(stderr,
       "ResourceExhausted: %s: killing current process!\n", description);
+   kill(getpid(), SIGQUIT);
+   // give 5 seconds wait time to print the PrintClassHistogram
+   sleep(5);
    kill(getpid(), SIGKILL);
 }
 
